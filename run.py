@@ -41,7 +41,7 @@ def run_blog():
                 # Call the view_posts method on the blog
                 blog.view_posts()
             elif to_do == '4':
-                # Call the view_post method with the int version of post_id
+                # Call the view_post method on the blog
                 blog.view_post()
             else:
                 print(f"Option {to_do} is coming soon!")
@@ -62,7 +62,11 @@ def run_blog():
                 # Call the view_posts method on the blog
                 blog.view_posts()
             elif to_do == '4':
+                # Call the view_post method on the blog
                 blog.view_post()
+            elif to_do == '5':
+                # Call the edit_post method on the blog
+                blog.edit_post()
             else:
                 print(f"Option {to_do} is coming soon!")
 
