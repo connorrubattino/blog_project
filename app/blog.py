@@ -5,20 +5,21 @@ class Blog:
         self.users = []
         self.posts = []
         self.current_user = None
-# Method that will take in a password guess and return True if it matches the "private" password, else False 
+# Method to create a new user instance and add to the Blog's user list
     def create_new_user(self):
         # Get user info from input
         username = input('Please enter a username: ')
         # Check to see if a user with that username already exists
-        if username in {u.username for u in self.users}:
-            print(f"User with the username {username} already exists.")
-        else:
-            password = input('Please enter a password: ')
-            # Create a new instance of User with the inputted info (imported at top)
-            new_user = User(username, password)
-            # Add the new user to the blog's user list
-            self.users.append(new_user)
-            print(f"{new_user} has been created.")
+        while username in {u.username for u in self.users}:
+            print(f"User with username {username} already exists")
+            username = input('Enter a different username: ')
+        
+        password = input('Please enter a password: ')
+        # Create an instance of User with the inputted info
+        new_user = User(username, password)
+        # Add the new instance of user to the blog's user list
+        self.users.append(new_user)
+        print(f"{new_user} has been created.")
 
 
     # Method to log a user in by setting the current_user to a User instance
@@ -60,3 +61,15 @@ class Blog:
             # Add the new post to the blog's posts list
             self.posts.append(new_post)
             print(f"{new_post.title} has been created!")
+
+
+    # Method to view all posts
+    def view_posts(self):
+        # Check if there are any posts
+        if self.posts:
+            # Loop through the blog's posts list
+            for post in self.posts:
+                # print the post (__str__ already formats it for us)
+                print(post)
+        else:
+            print("There are currently no posts for this blog :( ")
